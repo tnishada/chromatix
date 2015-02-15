@@ -69,28 +69,31 @@ namespace passwordGenerator
                 randomText += " " + lines[rd.Next(0, lines.Length - 1)];
             }
 
-            // adding 3 special words to 5th 8th 12th spaces
+            int position1 = rd.Next(1, wordsToBeInserted);
+            int position2 = rd.Next(1, wordsToBeInserted);
+            int position3 = rd.Next(1, wordsToBeInserted);
+
             int whiteSpaces = 0;
-            for (int index = 0; index < randomText.Length; index++)
+            for (int index = randomText.Length -1; index >= 0 ; index--)
             {
                 if (randomText[index] == ' ')
                 {
                     whiteSpaces++;
 
-                    if (whiteSpaces == 8)
+                    if (whiteSpaces == position1)
                     { 
                         randomText = randomText.Substring(0 , index) + " " + textWord1.Text +" "+ randomText.Substring(index+1) ;
                     }
 
-                    if (whiteSpaces == 15)
+                    if (whiteSpaces == position2)
                     {
-                        randomText = randomText.Substring(0 , index) + " " + textWord2.Text + randomText.Substring(index+1); 
+                        randomText = randomText.Substring(0 , index) + " " + textWord2.Text + " " + randomText.Substring(index+1); 
                    
                     }
 
-                    if (whiteSpaces == 25)
+                    if (whiteSpaces == position3)
                     {
-                        randomText = randomText.Substring(0, index) + " " + textWord3.Text + randomText.Substring(index + 1);
+                        randomText = randomText.Substring(0, index) + " " + textWord3.Text + " " + randomText.Substring(index + 1);
                    
                     }
                 }
